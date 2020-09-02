@@ -5,6 +5,7 @@ import { NotFoundRoutes } from "../routes/not-found-routes";
 import * as mongoose from "mongoose";
 import env from "../environment";
 import environment from "../environment";
+import * as cors from "cors";
 
 class App {
 
@@ -12,6 +13,7 @@ class App {
     routes: Routes = new Routes()
     notFound: NotFoundRoutes = new NotFoundRoutes()
     public mongoUrl: string = 'mongodb://localhost/' + environment.getDBName();
+
 
     constructor() {
         this.app = express()
@@ -23,6 +25,13 @@ class App {
     }
 
     private config(): void {
+        let allowCrossDomain = function(req, res, next)
+        {
+            res.header('Access-Control-Allow-Origin', "*");
+            res.header('Access-Control-Allow-Headers', "*");
+            next();
+        }
+        this.app.use(allowCrossDomain)
         this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({ extended: false }))
     }

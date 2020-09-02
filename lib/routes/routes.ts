@@ -32,12 +32,11 @@ const fileFilter = (req: any, file: any, cb: any) => {
 
 const upload = multer({ storage: storages, fileFilter: fileFilter });
 
+
 export class Routes {
 
    private food_controller: FoodController = new FoodController();
    private food_services: FoodServices = new FoodServices();
-
-
 
    public route(app: Application) {
 

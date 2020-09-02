@@ -11,7 +11,7 @@ export function successResponse(message: string, DATA: any, res: Response) {
 
 export function createdResponse(message: string, DATA: any, res: Response) {
     res.status(response_status_codes.created).json({
-        STATUS: 'CREATED',
+        STATUS: 'SUCCESS GET DATA',
         MESSAGE: message,
         DATA
     });
